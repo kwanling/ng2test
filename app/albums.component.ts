@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core';
+import {AlbumService} from './album.service';
 
 @Component({
     selector: 'albums',
@@ -10,12 +11,14 @@ import {Component} from 'angular2/core';
             {{ album }}
             </li>
         </ul>
-        `
+        `,
+    providers: [AlbumService]
 })
 export class AlbumsComponent {
     title = "Selection";
+    albums;
     
-    // http://jsonplaceholder.typicode.com/albums
-    
-    albums = ["quidem molestiae enim", "sunt qui excepturi placeat culpa", "omnis laborum odio"];
+    constructor(albumService: AlbumService) {
+        this.albums = albumService.getAlbums();
+    }
 }

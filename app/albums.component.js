@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './album.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,26 +10,29 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, album_service_1;
     var AlbumsComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (album_service_1_1) {
+                album_service_1 = album_service_1_1;
             }],
         execute: function() {
             AlbumsComponent = (function () {
-                function AlbumsComponent() {
+                function AlbumsComponent(albumService) {
                     this.title = "Selection";
-                    // http://jsonplaceholder.typicode.com/albums
-                    this.albums = ["quidem molestiae enim", "sunt qui excepturi placeat culpa", "omnis laborum odio"];
+                    this.albums = albumService.getAlbums();
                 }
                 AlbumsComponent = __decorate([
                     core_1.Component({
                         selector: 'albums',
-                        template: "\n        <h2>Albums</h2>\n        {{ title }}\n        <ul>\n            <li *ngFor=\"#album of albums\">\n            {{ album }}\n            </li>\n        </ul>\n        "
+                        template: "\n        <h2>Albums</h2>\n        {{ title }}\n        <ul>\n            <li *ngFor=\"#album of albums\">\n            {{ album }}\n            </li>\n        </ul>\n        ",
+                        providers: [album_service_1.AlbumService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [album_service_1.AlbumService])
                 ], AlbumsComponent);
                 return AlbumsComponent;
             }());

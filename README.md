@@ -39,3 +39,20 @@ import {AlbumsComponent} from './albums.component';
             </li>
         </ul>
 ```
+
+## Declaring Service
+
+```javascript
+export class AlbumService { }
+```
+## Consuming Service (Dependency Injection)
+
+```javascript
+@Component({
+    providers: [AlbumService]
+})
+export class AlbumsComponent {
+    constructor(albumService: AlbumService) {
+    }
+}
+```
