@@ -1,4 +1,4 @@
-System.register(['angular2/core', './albums.component'], function(exports_1, context_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,32 +10,31 @@ System.register(['angular2/core', './albums.component'], function(exports_1, con
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, albums_component_1;
-    var AppComponent;
+    var core_1;
+    var AlbumsComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (albums_component_1_1) {
-                albums_component_1 = albums_component_1_1;
             }],
         execute: function() {
-            AppComponent = (function () {
-                function AppComponent() {
+            AlbumsComponent = (function () {
+                function AlbumsComponent() {
+                    this.title = "Selection";
+                    // http://jsonplaceholder.typicode.com/albums
+                    this.albums = ["quidem molestiae enim", "sunt qui excepturi placeat culpa", "omnis laborum odio"];
                 }
-                AppComponent = __decorate([
+                AlbumsComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-app',
-                        template: "\n        <h1>Music Box</h1>\n        <albums></albums>\n    ",
-                        directives: [albums_component_1.AlbumsComponent]
+                        selector: 'albums',
+                        template: "\n        <h2>Albums</h2>\n        {{ title }}\n        <ul>\n            <li *ngFor=\"#album of albums\">\n            {{ album }}\n            </li>\n        </ul>\n        "
                     }), 
                     __metadata('design:paramtypes', [])
-                ], AppComponent);
-                return AppComponent;
+                ], AlbumsComponent);
+                return AlbumsComponent;
             }());
-            exports_1("AppComponent", AppComponent);
+            exports_1("AlbumsComponent", AlbumsComponent);
         }
     }
 });
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=albums.component.js.map
