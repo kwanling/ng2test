@@ -31,3 +31,11 @@ import {AlbumsComponent} from './albums.component';
 ```
 
 ## Template    
+
+```html
+        <ul>
+            <li *ngFor="#album of albums">
+            {{ album }}
+            </li>
+        </ul>
+```
