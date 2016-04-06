@@ -40,7 +40,7 @@ import {AlbumsComponent} from './albums.component';
         </ul>
 ```
 
-## Declaring Service
+## Creating Service
 
 ```javascript
 export class AlbumService { }
@@ -55,4 +55,43 @@ export class AlbumsComponent {
     constructor(albumService: AlbumService) {
     }
 }
+```
+## Creating Directive 
+
+```javascript
+import {Directive} from 'angular2/core';
+
+@Directive({
+    selector: '[speech]',
+    host: {
+        '(talkspurt)' : 'onTalkspurt()'
+        '(silence)' : 'onSilence()'
+    }
+})
+export class SpeechDirective {
+    
+    onTalkspurt() {
+        // todo
+    }
+
+    onSilence() {
+        // todo   
+    }
+        
+}
+```
+
+## Consuming Directive 
+
+```javascript
+import {SpeechDirective} from './speech.directive';
+
+@Component({
+    selector: 'albums',
+    template: `
+        <input type="text" speech>
+        `,
+    directives: [SpeechDirective]
+})
+
 ```
