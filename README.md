@@ -95,3 +95,45 @@ import {SpeechDirective} from './speech.directive';
 })
 
 ```
+## Binding
+
+```javascript
+
+// Property binding
+// one-way binding from component to view.
+<img src="{{ imageUrl }}" />
+<img [src]="imageUrl" />
+<img bind-src="imageUrl" />
+
+// Class binding\
+<span [class.badge]="showBadge">42</span>
+
+// Style binding
+<span [style.backgroundColor]="showBadge ? 'red' : 'blue'">42</span></a>
+
+// Event binding
+// handle events raised from the DOM
+<button (click)="onClick()">Submit</button>
+<button on-click="onClick()">Submit</button>
+
+// ngModel & two-way binding
+
+// explicit two-way binding
+// one-way binding (component -> view): 
+//   use property binding [] method to push component variable to DOM element
+// one-way binding: (view -> component):
+//   use event binding () method to push DOM event to component variable
+
+<input type="text" [value]="title" (input)="onInput($event)" />
+Preview: {{ title }}
+
+onInput($event) {
+    this.title = $event.target.value;
+}
+
+// ngModel
+<input type="text" [(ngModel)]="title" />
+<input type="text" bindon-ngModel="title" />
+
+
+```

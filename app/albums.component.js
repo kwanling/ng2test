@@ -26,13 +26,26 @@ System.register(['angular2/core', './album.service', './speech.directive'], func
         execute: function() {
             AlbumsComponent = (function () {
                 function AlbumsComponent(albumService) {
+                    this.isStar = false;
+                    this.showBadge = true;
                     this.title = "Selection";
+                    this.imageUrl = "http://lorempixel.com/200/200";
                     this.albums = albumService.getAlbums();
                 }
+                AlbumsComponent.prototype.onClick = function ($event) {
+                    $event.stopPropagation();
+                    console.log('onclick', $event);
+                };
+                AlbumsComponent.prototype.onDivClick = function () {
+                    console.log('onDivClick');
+                };
+                AlbumsComponent.prototype.onInput = function ($event) {
+                    this.title = $event.target.value;
+                };
                 AlbumsComponent = __decorate([
                     core_1.Component({
                         selector: 'albums',
-                        template: "\n        <h2>Albums</h2>\n        {{ title }}\n        <input type=\"text\" speech>\n        <ul>\n            <li *ngFor=\"#album of albums\">\n            {{ album }}\n            </li>\n        </ul>\n        ",
+                        template: "\n        <h2>Albums</h2>\n        {{ title }}\n        <input type=\"text\" speech>\n        <ul>\n            <li *ngFor=\"#album of albums\">\n            {{ album }}\n            </li>\n        </ul>\n        \n        <img [src]=\"imageUrl\" />\n        \n        <div>\n            <a href=\"#\">Inbox <span>42</span></a>\n            <a href=\"#\">Inbox <span [class.badge]=\"!showBadge\">42</span></a>\n        </div>\n        <div>            \n            <a href=\"#\">Inbox <span class=\"badge\">42</span></a>\n            <a href=\"#\">Inbox <span [class.badge]=\"showBadge\">42</span></a>\n        </div>\n        <div>            \n            <a href=\"#\">Inbox <span class=\"badge\" style=\"background-color: red\">42</span></a>\n            <a href=\"#\">Inbox <span [class.badge]=\"showBadge\" \n            [style.backgroundColor]=\"showBadge ? 'red' : 'blue'\">42</span></a>\n        </div>\n        \n        <div (click)=\"onDivClick()\">\n            <button (click)=\"onClick($event)\">Submit</button>\n        </div>\n        \n        <div>\n            <input type=\"text\" [value]=\"title\" (input)=\"onInput($event)\" />\n            Preview: {{ title }}\n        </div>\n\n        <div>\n            <input type=\"text\" [(ngModel)]=\"title\" />\n            Preview: {{ title }}\n        </div>\n        \n        <div>\n            <i class=\"glyphicon\"></i>\n            <i class=\"glyphicon glyphicon-star\"></i>\n            <i class=\"glyphicon glyphicon-star-empty\"></i>\n        </div>\n        \n        <div>\n            <i class=\"glyphicon\" \n                [class.glyphicon-star]=\"isStar\"\n                [class.glyphicon-star-empty]=\"! isStar\"\n                (click)=\"isStar = !isStar\"\n                ></i>\n        </div>\n        \n        ",
                         providers: [album_service_1.AlbumService],
                         directives: [speech_directive_1.SpeechDirective]
                     }), 
