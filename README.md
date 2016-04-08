@@ -134,6 +134,22 @@ onInput($event) {
 // ngModel
 <input type="text" [(ngModel)]="title" />
 <input type="text" bindon-ngModel="title" />
+```
 
+# Custom Component: Input
 
+```javascript
+import {Component, Input} from 'angular2/core';
+
+@Input() myProperty = false;
+
+```
+# Custom Component: Output
+
+```javascript
+import {Component, Input, Output, EventEmitter} from 'angular2/core';
+
+@Output change = new EventEmitter();
+
+this.change.emit({ newValue: ... });
 ```

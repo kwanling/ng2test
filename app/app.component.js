@@ -1,4 +1,4 @@
-System.register(['angular2/core', './albums.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './albums.component', './stars.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './albums.component'], function(exports_1, con
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, albums_component_1;
+    var core_1, albums_component_1, stars_component_1;
     var AppComponent;
     return {
         setters:[
@@ -19,16 +19,30 @@ System.register(['angular2/core', './albums.component'], function(exports_1, con
             },
             function (albums_component_1_1) {
                 albums_component_1 = albums_component_1_1;
+            },
+            function (stars_component_1_1) {
+                stars_component_1 = stars_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
+                    this.post = {
+                        name: "My Name",
+                        isStar: true
+                    };
+                    this.post1 = {
+                        name: "My Name",
+                        isStar: false
+                    };
                 }
+                AppComponent.prototype.onChange = function ($event) {
+                    console.log($event);
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n        <h1>Music Box</h1>\n        <albums></albums>\n    ",
-                        directives: [albums_component_1.AlbumsComponent]
+                        template: "\n        <h1>Music Box</h1>\n        <albums></albums>\n        <stars [isStar]=\"post.isStar\"></stars>\n        <stars [isStar]=\"post1.isStar\" (change)=\"onChange($event)\"></stars>\n    ",
+                        directives: [albums_component_1.AlbumsComponent, stars_component_1.StarsComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
