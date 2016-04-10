@@ -1,4 +1,4 @@
-System.register(['angular2/core', './albums.component', './stars.component', './like.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './albums.component', './stars.component', './like.component', './recommend.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './albums.component', './stars.component', './
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, albums_component_1, stars_component_1, like_component_1;
+    var core_1, albums_component_1, stars_component_1, like_component_1, recommend_component_1;
     var AppComponent;
     return {
         setters:[
@@ -25,6 +25,9 @@ System.register(['angular2/core', './albums.component', './stars.component', './
             },
             function (like_component_1_1) {
                 like_component_1 = like_component_1_1;
+            },
+            function (recommend_component_1_1) {
+                recommend_component_1 = recommend_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -33,7 +36,8 @@ System.register(['angular2/core', './albums.component', './stars.component', './
                         name: "My Name",
                         isStar: true,
                         totalVotes: 10,
-                        myVote: 0
+                        myVote: 0,
+                        totalStars: 2
                     };
                 }
                 AppComponent.prototype.onChange = function ($event) {
@@ -42,8 +46,8 @@ System.register(['angular2/core', './albums.component', './stars.component', './
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n        <h1>Music Box</h1>\n        <albums></albums>\n        <stars [isStar]=\"post.isStar\"></stars>\n        <like [totalVotes]=\"post.totalVotes\" [myVote]=\"post.myVote\"></like>\n    ",
-                        directives: [albums_component_1.AlbumsComponent, stars_component_1.StarsComponent, like_component_1.LikeComponent]
+                        template: "\n        <h1>Music Box</h1>\n        <albums></albums>\n        <stars [isStar]=\"post.isStar\"></stars>\n        <like [totalVotes]=\"post.totalVotes\" [myVote]=\"post.myVote\"></like>\n        <recommend [totalStars]=\"post.totalStars\"></recommend>\n    ",
+                        directives: [albums_component_1.AlbumsComponent, stars_component_1.StarsComponent, like_component_1.LikeComponent, recommend_component_1.RecommendComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
