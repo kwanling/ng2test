@@ -1,6 +1,7 @@
 import {Component} from 'angular2/core';
 import {AlbumsComponent} from './albums.component';
 import {StarsComponent} from './stars.component';
+import {LikeComponent} from './like.component';
 
 @Component({
     selector: 'my-app',
@@ -8,19 +9,17 @@ import {StarsComponent} from './stars.component';
         <h1>Music Box</h1>
         <albums></albums>
         <stars [isStar]="post.isStar"></stars>
-        <stars [isStar]="post1.isStar" (change)="onChange($event)"></stars>
+        <like [totalVotes]="post.totalVotes" [myVote]="post.myVote"></like>
     `,
-    directives: [AlbumsComponent, StarsComponent]
+    directives: [AlbumsComponent, StarsComponent, LikeComponent]
 })
 export class AppComponent { 
     
     post = {
         name: "My Name",
-        isStar: true
-    };
-    post1 = {
-        name: "My Name",
-        isStar: false
+        isStar: true,
+        totalVotes: 10,
+        myVote: 0
     };
     
     onChange($event) {

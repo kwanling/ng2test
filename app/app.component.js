@@ -1,4 +1,4 @@
-System.register(['angular2/core', './albums.component', './stars.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './albums.component', './stars.component', './like.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './albums.component', './stars.component'], fu
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, albums_component_1, stars_component_1;
+    var core_1, albums_component_1, stars_component_1, like_component_1;
     var AppComponent;
     return {
         setters:[
@@ -22,17 +22,18 @@ System.register(['angular2/core', './albums.component', './stars.component'], fu
             },
             function (stars_component_1_1) {
                 stars_component_1 = stars_component_1_1;
+            },
+            function (like_component_1_1) {
+                like_component_1 = like_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
                     this.post = {
                         name: "My Name",
-                        isStar: true
-                    };
-                    this.post1 = {
-                        name: "My Name",
-                        isStar: false
+                        isStar: true,
+                        totalVotes: 10,
+                        myVote: 0
                     };
                 }
                 AppComponent.prototype.onChange = function ($event) {
@@ -41,8 +42,8 @@ System.register(['angular2/core', './albums.component', './stars.component'], fu
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n        <h1>Music Box</h1>\n        <albums></albums>\n        <stars [isStar]=\"post.isStar\"></stars>\n        <stars [isStar]=\"post1.isStar\" (change)=\"onChange($event)\"></stars>\n    ",
-                        directives: [albums_component_1.AlbumsComponent, stars_component_1.StarsComponent]
+                        template: "\n        <h1>Music Box</h1>\n        <albums></albums>\n        <stars [isStar]=\"post.isStar\"></stars>\n        <like [totalVotes]=\"post.totalVotes\" [myVote]=\"post.myVote\"></like>\n    ",
+                        directives: [albums_component_1.AlbumsComponent, stars_component_1.StarsComponent, like_component_1.LikeComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
