@@ -37,8 +37,10 @@ System.register(['angular2/core', './albums.component', './stars.component', './
                         isStar: true,
                         totalVotes: 10,
                         myVote: 0,
-                        totalStars: 2
+                        totalStars: 2,
+                        viewMode: 'map'
                     };
+                    this.albums = ['Album 1', 'Album 2', 'Album 3'];
                 }
                 AppComponent.prototype.onChange = function ($event) {
                     console.log($event);
@@ -46,7 +48,7 @@ System.register(['angular2/core', './albums.component', './stars.component', './
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n        <h1>Music Box</h1>\n        <albums></albums>\n        <stars [isStar]=\"post.isStar\"></stars>\n        <like [totalVotes]=\"post.totalVotes\" [myVote]=\"post.myVote\"></like>\n        <recommend [totalStars]=\"post.totalStars\"></recommend>\n    ",
+                        template: "\n        <h1>Music Box</h1>\n        <albums></albums>\n        <stars [isStar]=\"post.isStar\"></stars>\n        <like [totalVotes]=\"post.totalVotes\" [myVote]=\"post.myVote\"></like>\n        <recommend [totalStars]=\"post.totalStars\"></recommend>\n        \n        <ul class=\"nav nav-pills\">\n            <li><a [class.active]=\"viewMode == 'map'\" (click)=\"viewMode='map'\">Map view</a></li>\n            <li><a [class.active]=\"viewMode == 'list'\" (click)=\"viewMode='list'\">List view</a></li>\n        </ul>\n        <div [ngSwitch]=\"viewMode\">\n            <template [ngSwitchWhen]=\"'map'\">Map view content</template>\n            <template [ngSwitchWhen]=\"'list'\">List view content</template>\n        </div>\n        \n        <div *ngFor=\"#album of albums\">\n            <albums [title]=\"album\"></albums>\n        </div>\n        \n        <template ngFor #album [ngForOf]=\"albums\">\n            <div>\n                <albums [title]=\"album\"></albums>\n            </div>\n        <template>\n    ",
                         directives: [albums_component_1.AlbumsComponent, stars_component_1.StarsComponent, like_component_1.LikeComponent, recommend_component_1.RecommendComponent]
                     }), 
                     __metadata('design:paramtypes', [])

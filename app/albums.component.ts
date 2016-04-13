@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, Input} from 'angular2/core';
 import {AlbumService} from './album.service';
 import {SpeechDirective} from './speech.directive';
 
@@ -65,7 +65,7 @@ import {SpeechDirective} from './speech.directive';
 export class AlbumsComponent {
     isStar = false;
     showBadge = true;
-    title = "Selection";
+    @Input() title = "Selection";
     imageUrl = "http://lorempixel.com/200/200";
     
     albums;

@@ -42,6 +42,10 @@ System.register(['angular2/core', './album.service', './speech.directive'], func
                 AlbumsComponent.prototype.onInput = function ($event) {
                     this.title = $event.target.value;
                 };
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Object)
+                ], AlbumsComponent.prototype, "title", void 0);
                 AlbumsComponent = __decorate([
                     core_1.Component({
                         selector: 'albums',

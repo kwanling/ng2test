@@ -153,3 +153,42 @@ import {Component, Input, Output, EventEmitter} from 'angular2/core';
 
 this.change.emit({ newValue: ... });
 ```
+
+# Rendering Options
+
+```javascript
+// element will be removed from the DOM
+<div *ngIf="">
+some view
+</div>
+
+// element will appear in the DOM
+<div [hidden]="">
+another view
+</div>
+
+// element will display based on a condition
+<div [ngSwitch]="...">
+    <template [ngSwitchWhen]="'...'" ngSwitchDefault>Some view here</template>
+    <template [ngSwitchWhen]="'...'">Another view here</template>
+</div>
+
+// element will display based on a condition
+<div [ngSwitch]="...">
+    <template [ngSwitchCase]="'...'" ngSwitchDefault>Some view here</template>
+    <template [ngSwitchCase]="'...'">Another view here</template>
+</div>
+
+// proposal
+<div [ngSwitch]="...">
+    <template [ngCase]="'...'">Some view here</template>
+    <template [ngCase]="'...'">Another view here</template>
+</div>
+
+// ngFor
+<div *ngFor="#album of albums">
+    {{ album }}
+</div>
+
+
+```
