@@ -4,10 +4,15 @@ import {StarsComponent} from './stars.component';
 import {LikeComponent} from './like.component';
 import {RecommendComponent} from './recommend.component';
 import {TruncatePipe} from './truncate.pipe';
+import {MenuComponent} from './menu.component';
 
 @Component({
     selector: 'my-app',
     template: `
+        <menu title='this is the title'>
+            Here is the content
+        </menu>
+
         <h1>Music Box</h1>
         <albums></albums>
         <stars [isStar]="post.isStar"></stars>
@@ -37,7 +42,7 @@ import {TruncatePipe} from './truncate.pipe';
             {{ post.body | truncate:200 }}
         </div>
     `,
-    directives: [AlbumsComponent, StarsComponent, LikeComponent, RecommendComponent],
+    directives: [AlbumsComponent, StarsComponent, LikeComponent, RecommendComponent, MenuComponent],
     pipes: [TruncatePipe]
 })
 export class AppComponent { 

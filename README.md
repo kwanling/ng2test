@@ -215,5 +215,6 @@ export class MyComponent {
     template: `
         <ng-content select=".."></ng-content>
     `
+}
 
 ```
