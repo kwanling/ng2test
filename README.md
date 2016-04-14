@@ -190,5 +190,30 @@ another view
     {{ album }}
 </div>
 
+// ngClass
+<div [ngClass]='{ }'>
+</div>
+
+// ngStyle
+<div [ngStyle]='{ }'>
+</div>
+
+```
+
+# Rendering ng-content directive
+
+```javascript
+
+// host can pass HTML markup to NG component.
+<mycomponent>
+    This is the body...
+</mycomponent>
+
+// use ng-content to mark the insertion point in component template.
+// can have multiple insertion points with css selector. 
+export class MyComponent {
+    template: `
+        <ng-content select=".."></ng-content>
+    `
 
 ```
