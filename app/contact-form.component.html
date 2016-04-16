@@ -1,11 +1,36 @@
 <form>
     <div class="form-group">
         <label for="name">Name</label>
-        <input id="name" type="text" class="form-control">
+        <input 
+            #name="ngForm" 
+            ngControl="name" 
+            (change)="log(name)" 
+            id="name" 
+            type="text" 
+            class="form-control"
+            required
+            >
+         <div 
+            class="alert alert-danger" 
+            *ngIf="name.touched && !name.valid">
+            Name is required.
+         </div>
     </div>
     <div class="form-group">
         <label for="comment">Comment</label>
-        <textarea id="comment" cols="30" rows="10" class="form-control"></textarea>
+        <textarea 
+            #comment="ngForm"
+            ngControl="comment" 
+            id="comment" 
+            cols="30" rows="10" 
+            class="form-control"
+            required>
+        </textarea>
+        <div
+            class="alert alert-danger"
+            *ngIf="comment.touched && !comment.valid">
+            Comment is required
+        </div>
     </div>
     <button class="btn btn-primary" type="submit">Submit</button>
 </form>
