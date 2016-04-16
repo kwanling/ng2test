@@ -1,44 +1,23 @@
-<form>
+<form #f="ngForm" (ngSubmit)="onSubmit(f.form)">
     <div class="form-group">
         <label for="name">Name</label>
-        <input 
-            #name="ngForm" 
-            ngControl="name" 
-            (change)="log(name)" 
-            id="name" 
-            type="text" 
-            class="form-control"
-            required
-            minlength="5"
-            >
-         <div 
-            class="alert alert-danger" 
-            *ngIf="name.touched && name.errors?.required"
-            >
+        <input #name="ngForm" ngControl="name" (change)="log(name)" id="name" type="text" class="form-control" required minlength="5">
+        <div class="alert alert-danger" *ngIf="name.touched && name.errors?.required">
             Name is required.
-         </div>
-         <div
-            class="alert alert-danger"
-            *ngIf="name.touched && name.errors?.minlength"
-            >
-            Name must be at least 5 characters. 
-         </div>
+        </div>
+        <div class="alert alert-danger" *ngIf="name.touched && name.errors?.minlength">
+            Name must be at least 5 characters.
+        </div>
     </div>
     <div class="form-group">
         <label for="comment">Comment</label>
-        <textarea 
-            #comment="ngForm"
-            ngControl="comment" 
-            id="comment" 
-            cols="30" rows="10" 
-            class="form-control"
-            required>
+        <textarea #comment="ngForm" ngControl="comment" id="comment" cols="30" rows="10" class="form-control" required>
         </textarea>
-        <div
-            class="alert alert-danger"
-            *ngIf="comment.touched && !comment.valid">
+        <div class="alert alert-danger" *ngIf="comment.touched && !comment.valid">
             Comment is required
         </div>
     </div>
-    <button class="btn btn-primary" type="submit">Submit</button>
+    <button class="btn btn-primary" type="submit"
+        [disabled]="!f.valid"
+        >Submit</button>
 </form>
