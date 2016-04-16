@@ -1,12 +1,13 @@
 import {Component} from 'angular2/core';
 import {ContactFormComponent} from './contact-form.component';
+import {ContactForm2Component} from './contact-form2.component';
 
 @Component({
     selector: 'my-app2',
     template: `
-        <contact-form></contact-form>
+        <contact-form2></contact-form2>
     `,
-    directives: [ContactFormComponent]
+    directives: [ContactFormComponent, ContactForm2Component]
 })
 export class App2Component { 
     post = {
