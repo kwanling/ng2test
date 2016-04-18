@@ -2,7 +2,7 @@ import {Component} from 'angular2/core';
 import {Observable} from 'rxjs/Rx';
 
 @Component({
-    selector: 'observables-test',
+    selector: 'my-app3',
     template: `
     `
 })

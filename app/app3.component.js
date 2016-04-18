@@ -153,7 +153,7 @@ System.register(['angular2/core', 'rxjs/Rx'], function(exports_1, context_1) {
                 };
                 App3Component = __decorate([
                     core_1.Component({
-                        selector: 'observables-test',
+                        selector: 'my-app3',
                         template: "\n    "
                     }), 
                     __metadata('design:paramtypes', [])
