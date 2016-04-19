@@ -27,6 +27,7 @@ System.register(['angular2/core', "./post.service", 'angular2/http'], function(e
             App4Component = (function () {
                 function App4Component(_postService) {
                     this._postService = _postService;
+                    this.isLoading = true;
                     this._postService.createPost({
                         userId: 1,
                         title: "a",
@@ -34,13 +35,17 @@ System.register(['angular2/core', "./post.service", 'angular2/http'], function(e
                     });
                 }
                 App4Component.prototype.ngOnInit = function () {
+                    var _this = this;
                     this._postService.getPosts()
-                        .subscribe(function (posts) { return console.log(posts[0]); });
+                        .subscribe(function (posts) {
+                        _this.isLoading = false;
+                        console.log(posts[0]);
+                    });
                 };
                 App4Component = __decorate([
                     core_1.Component({
                         selector: 'my-app4',
-                        template: "\n    ",
+                        template: "\n        <div *ngIf=\"isLoading\">\n        <i class=\"fa fa-spinner fa-spin fa-3x\"></i>\n        </div>\n    ",
                         providers: [post_service_1.PostService, http_1.HTTP_PROVIDERS]
                     }), 
                     __metadata('design:paramtypes', [post_service_1.PostService])
