@@ -11,11 +11,15 @@ import {OnInit} from 'angular2/core';
 })
 export class App4Component implements OnInit {
     constructor(private _postService: PostService) {
-        this._postService.getPosts()
-            .subscribe(posts => console.log(posts));
+        this._postService.createPost({
+            userId: 1,
+            title: "a",
+            body: "afdf"    
+        });
     }   
     
     ngOnInit() {
-        
+        this._postService.getPosts()
+            .subscribe(posts => console.log(posts[0]));        
     }
 }
