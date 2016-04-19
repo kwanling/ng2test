@@ -122,7 +122,7 @@ export class App3Component {
         var tweetStream = Observable.of([1,2,3]).delay(1500);
         
         var c = Observable.forkJoin(userStream, tweetStream)
-            .map(joined => new Object({user: joined[0], tweet: joined[1]});
+            .map(joined => new Object({user: joined[0], tweet: joined[1]}));
         //c.subscribe(x => console.log(x));   
         c.subscribe(x => console.log(x.user));  
     }
