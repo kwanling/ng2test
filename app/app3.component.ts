@@ -106,7 +106,7 @@ export class App3Component {
             
         //c.subscribe(x => console.log(x));   
         c.subscribe(
-            x => console.log(x.user),
+            x => console.log(x),
             error => console.error(error)
             );  
     }
@@ -124,7 +124,7 @@ export class App3Component {
         var c = Observable.forkJoin(userStream, tweetStream)
             .map(joined => new Object({user: joined[0], tweet: joined[1]}));
         //c.subscribe(x => console.log(x));   
-        c.subscribe(x => console.log(x.user));  
+        c.subscribe(x => console.log(x));  
     }
 
     // timer interval    
